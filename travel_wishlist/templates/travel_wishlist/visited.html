@@ -1,0 +1,20 @@
+<h2>Places you have visited</h2>
+
+<!--if there's anything in the visited list we'll create the below loop-->
+
+{% if visited %}
+
+<ul>
+    {% for place in visited %}
+        <li>{{place.name}}</li>
+    {% endfor %}
+</ul>
+
+<!--else display the message below-->
+{% else %}
+
+<p>You have not visited any places yet.</p>
+
+{% endif %}
+
+<a href="{% url 'place_list' %}">Places you've yet to visit</a>

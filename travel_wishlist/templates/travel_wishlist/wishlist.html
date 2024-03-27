@@ -1,0 +1,33 @@
+<h2>Travel Wishlist</h2>
+
+<!--action below is taking url place_list-->
+<form method="POST" action="{% url 'place_list' %}">
+    {% csrf_token %}
+    {{ new_place_form}}
+    <!--above creates the boxes for the user to type in a new place
+    below creates a button to submit to database-->
+    <button type="submit">Add</button>
+
+</form>
+
+{% for place in places %}
+
+<!--built in for loop above, div conatiner for html content below-->
+<div>
+    {{ place.name }}
+    {% csrf_token %}
+    <form method="POST" action="{% url 'place_was_visited' place.pk %}">
+        <button>Visited!</button>
+    </form>
+
+</div>
+
+<!--below will only display if there are no places in place-->
+{% empty %}
+
+<p>You have no places in your wishlist.</p>
+
+{% endfor %}
+
+<!--create link to visited locations-->
+<a href="{% url 'places_visited' %}">Places you've visited</a>
