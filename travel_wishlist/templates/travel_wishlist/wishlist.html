@@ -1,22 +1,29 @@
+<!--below tells the wishlist template to go look for the base template
+and include the text here-->
+{% extends 'travel_wishlist/base.html' %}
+<!--the block content tag takes all the below and inserts it into the base html-->
+{% block content %}
+
 <h2>Travel Wishlist</h2>
 
 <!--action below is taking url place_list-->
 <form method="POST" action="{% url 'place_list' %}">
     {% csrf_token %}
-    {{ new_place_form}}
+    {{ new_place_form }}
     <!--above creates the boxes for the user to type in a new place
     below creates a button to submit to database-->
-    <button type="submit">Add</button>
+    <button id="add-new-place" type="submit">Add</button>
 
 </form>
 
 {% for place in places %}
 
 <!--built in for loop above, div conatiner for html content below-->
-<div>
-    {{ place.name }}
-    {% csrf_token %}
-    <form method="POST" action="{% url 'place_was_visited' place.pk %}">
+<div class="wishlist-place">
+    <span class="place-name">{{ place.name }}</span>
+
+    <form class="visited-form" method="POST" action="{% url 'place_was_visited' place.pk %}">
+        {% csrf_token %}
         <button>Visited!</button>
     </form>
 
@@ -29,5 +36,4 @@
 
 {% endfor %}
 
-<!--create link to visited locations-->
-<a href="{% url 'places_visited' %}">Places you've visited</a>
+{% endblock %}

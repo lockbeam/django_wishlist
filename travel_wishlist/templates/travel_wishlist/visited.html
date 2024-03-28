@@ -1,3 +1,9 @@
+<!--below tells the wishlist template to go look for the base template
+and include the text here-->
+{% extends 'travel_wishlist/base.html' %}
+<!--the block content tag takes all the below and inserts it into the base html-->
+{% block content %}
+
 <h2>Places you have visited</h2>
 
 <!--if there's anything in the visited list we'll create the below loop-->
@@ -17,4 +23,4 @@
 
 {% endif %}
 
-<a href="{% url 'place_list' %}">Places you've yet to visit</a>
+{% endblock %}
