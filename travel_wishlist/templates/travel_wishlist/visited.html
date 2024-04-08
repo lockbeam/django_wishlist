@@ -8,19 +8,25 @@ and include the text here-->
 
 <!--if there's anything in the visited list we'll create the below loop-->
 
+<div>
+
 {% if visited %}
 
 <ul>
     {% for place in visited %}
-        <li>{{place.name}}</li>
+        <li>
+            <a href="{% url 'place_details' place.pk %}">{{ place.name }}</a>
+        </li>
     {% endfor %}
 </ul>
 
 <!--else display the message below-->
 {% else %}
 
-<p>You have not visited any places yet.</p>
+    <p>You have not visited any places yet.</p>
 
 {% endif %}
+
+</div>
 
 {% endblock %}

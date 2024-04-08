@@ -19,20 +19,22 @@ and include the text here-->
 {% for place in places %}
 
 <!--built in for loop above, div conatiner for html content below-->
-<div class="wishlist-place">
-    <span class="place-name">{{ place.name }}</span>
+    <div class="wishlist-place">
+        <span id="place-name-{{ place.pk }}" class="place-name">
+            <a href="{% url 'place_details' place.pk %}">{{ place.name }}</a>
+        </span>
 
-    <form class="visited-form" method="POST" action="{% url 'place_was_visited' place.pk %}">
-        {% csrf_token %}
-        <button>Visited!</button>
-    </form>
+        <form class="visited-form" method="POST" action="{% url 'place_was_visited' place.pk %}">
+            {% csrf_token %}
+            <button>Visited!</button>
+        </form>
 
 </div>
 
 <!--below will only display if there are no places in place-->
 {% empty %}
 
-<p>You have no places in your wishlist.</p>
+    <p>You have no places in your wishlist.</p>
 
 {% endfor %}
 

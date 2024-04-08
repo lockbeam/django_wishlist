@@ -1,28 +1,27 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>Travel Wishlist</title>
-        <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
 
-    <h1>Where do you want to go?</h1>
-
     <body>
-        <!--below is the template for body content-->
-        {% block content %}
-        {% endblock %}
+    <!--below is the template for body content-->
+
+
+        <h1 id="site-header">Where do you want to go?</h1>
+            {% block content %}
+            {% endblock %}
+        <hr>
+
+        <div>
+            <p>A travel wishlist, built with Django</p>
+
+            <a class="nav-link" href="{% url 'place_list' %}">Places you've yet to visit</a>
+            <!--create link to visited locations-->
+            <a class="nav-link" href="{% url 'places_visited' %}">Places you've visited</a>
+        </div>
     </body>
-
-    <div>
-        <p>A travel wishlist, built with Django</p>
-
-        <a class="nav-link" href="{% url 'place_list' %}">Places you've yet to visit</a>
-        <!--create link to visited locations-->
-        <a class="nav-link" href="{% url 'places_visited' %}">Places you've visited</a>
-
-    </div>
-
 </html>
